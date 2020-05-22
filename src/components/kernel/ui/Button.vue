@@ -1,9 +1,11 @@
 <template>
-	<button class="button default" @click="buttonPressed">
+	<button class="button" @click="buttonPressed">
 		<span v-if="captionText">
-			{{ captionText }}
+			<span>{{ captionText }}</span>
 		</span>
-		<slot v-else></slot>
+		<span v-else>
+			<slot></slot>
+		</span>
 	</button>
 </template>
 
@@ -26,8 +28,8 @@
 
 		buttonPressed()
 		{
-			this.captionText = "??";
-			console.log('biutton pressed => ', this.captionText);
+			//this.captionText = "??";
+			console.log('button pressed => ', this.captionText);
 		}
 	}
 </script>

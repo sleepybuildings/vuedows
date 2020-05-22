@@ -2,6 +2,8 @@
 
 Just a little fun project trying to reimplement the Windows 3.11 UI in Vue.
 
+![Screenshot](screenshot.png?raw=true "Screenshot")
+
 --
 
 ## Project setup

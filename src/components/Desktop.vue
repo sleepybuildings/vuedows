@@ -1,11 +1,27 @@
 <template>
 	<div class="desktop">
 
-		<window caption="koe">
+		<window caption="This is a window frame">
 
-			<btn class="button">
-				This is a test
-			</btn>
+			<div style="text-align: center; padding: 20px">
+
+				<btn class="button">
+					This is a button
+				</btn>
+
+				<br><br>
+
+				<btn class="button default">
+					This is a default button
+				</btn>
+
+				<br><br>
+
+				<btn class="button focused">
+					This is a focused button
+				</btn>
+
+			</div>
 
 		</window>
 	</div>
