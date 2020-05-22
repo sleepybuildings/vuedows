@@ -1,0 +1,14 @@
+@import "reset";
+@import "variables";
+
+body{
+	background: teal;
+}
+
+*{
+	font-smooth: none !important;
+	-webkit-font-smoothing : none !important;
+}
+
+@import "components/button";
+@import "components/window";
