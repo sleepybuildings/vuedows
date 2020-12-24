@@ -10,7 +10,7 @@ $border-size: 3px;
 	border: $border-size solid $button-face;
 	box-shadow: inset 0px 0px 0px 1px black;
 	outline: 1px solid black;
-	position: relative;
+	position: absolute;
 
 	.client{
 		z-index: 40;
@@ -20,6 +20,7 @@ $border-size: 3px;
 		right: 1px;
 		bottom: 1px;
 		top: $caption-bar-height + 1;
+		overflow: hidden;
 	}
 
 	> .resize-line-vertical,
@@ -68,6 +69,14 @@ $border-size: 3px;
 		flex-grow: 1;
 		height: $caption-bar-height;
 		line-height: $caption-bar-height;
+	}
+
+	&.in-active{
+		background: $title-bar-inactive;
+
+		.caption-text{
+			color: $title-bar-text-inactive;
+		}
 	}
 }
 

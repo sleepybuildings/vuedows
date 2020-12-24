@@ -18,18 +18,20 @@
 	export default class Frame extends mixins(FrameSize, FrameClasses, FrameCaption)
 	{
 
-		get frameStyles()
+		protected getFrameStylesAsArray(): Array<string>
 		{
-			console.log('Formatting framesize', this.frameSize);
-
-			const styles = [
+			return [
 				`left: ${this.frameSize?.left ?? 0}px`,
 				`top: ${this.frameSize?.top ?? 0}px`,
 				`width: ${this.frameSize?.width ?? 100}px`,
 				`height: ${this.frameSize?.height ?? 100}px`
 			];
+		}
 
-			return styles.join(';');
+
+		get frameStyles()
+		{
+			return this.getFrameStylesAsArray().join(';');
 		}
 	}
 

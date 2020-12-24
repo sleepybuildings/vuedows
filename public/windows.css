@@ -337,6 +337,7 @@ body {
   font-weight: bold;
   border-radius: 1px;
   overflow: hidden;
+  position: absolute;
   background: silver;
   height: 28px;
   width: 200px;
@@ -362,7 +363,7 @@ body {
   border: 3px solid silver;
   box-shadow: inset 0px 0px 0px 1px black;
   outline: 1px solid black;
-  position: relative; }
+  position: absolute; }
   .window .client {
     z-index: 40;
     background: white;
@@ -370,7 +371,8 @@ body {
     left: 1px;
     right: 1px;
     bottom: 1px;
-    top: 25px; }
+    top: 25px;
+    overflow: hidden; }
   .window > .resize-line-vertical,
   .window > .resize-line-horizontal {
     position: absolute;
@@ -410,6 +412,10 @@ body {
     flex-grow: 1;
     height: 24px;
     line-height: 24px; }
+  .caption-bar.in-active {
+    background: silver; }
+    .caption-bar.in-active .caption-text {
+      color: black; }
 
 .system-button {
   flex-shrink: 0;

@@ -1,33 +1,34 @@
 <template>
 	<div class="desktop">
 
-		<window caption="This is a window frame" :initialSize="[100, 100, 300, 300]">
+		<gui-application caption="App 1" :initialSize="[100, 100, 300, 300]">
+			CONTENT!
+		</gui-application>
 
-			<div style="text-align: center; padding: 20px">
+<!--		<window caption="Initial caption" ref="testwindow" :initialSize="[100, 100, 300, 300]">-->
 
-<!--				<btn class="button">-->
-<!--					This is a button-->
-<!--				</btn>-->
+<!--			<push-button @tapped="testButtonPressed" ref="testButton1" :initialSize="[10, 10, 100, 25]">-->
+<!--				Button 1-->
+<!--			</push-button>-->
 
-<!--				<br><br>-->
+<!--			<push-button @tapped="testButtonPressed" ref="testButton2" :initialSize="[10, 50, 100, 25]">-->
+<!--				Button 2-->
+<!--			</push-button>-->
 
-<!--				<btn class="button default">-->
-<!--					This is a default button-->
-<!--				</btn>-->
+<!--		</window>-->
 
-<!--				<br><br>-->
 
-<!--				<btn class="button focused">-->
-<!--					This is a focused button-->
-<!--				</btn>-->
+<!--		<window caption="Second Window" :initialSize="[500, 100, 300, 300]">-->
+<!--			<push-button :initialSize="[50, 10, 100, 25]">-->
+<!--				Button 2-->
+<!--			</push-button>-->
+<!--		</window>-->
 
-<!--				<push-button @click="testButtonPressed" ref="testButton">-->
-<!--					KOE-->
-<!--				</push-button>-->
-
-			</div>
-
-		</window>
+<!--		<window caption="Third Window" :initialSize="[300, 50, 300, 300]">-->
+<!--			<push-button :initialSize="[50, 10, 100, 25]">-->
+<!--				Button 2-->
+<!--			</push-button>-->
+<!--		</window>-->
 	</div>
 </template>
 
@@ -37,9 +38,10 @@
 	import PushButton from "@/components/kernel/ui/Components/Buttons/PushButton.vue";
 	import Frame from "@/components/kernel/ui/Base/Frame.vue";
 	import Window from "@/components/kernel/ui/Components/Windows/Window.vue";
+	import GuiApplication from "@/components/kernel/ui/Base/GuiApplication.vue";
 
 	@Component({
-		components: {PushButton, Window},
+		components: {GuiApplication, PushButton, Window},
 		data()
 		{
 			return {
@@ -49,16 +51,12 @@
 	})
 	export default class Desktop extends Frame
 	{
-		mounted()
-		{
-		//	this.windowStyle = WindowMode.Maximized;
-		}
-
 
 		testButtonPressed()
 		{
-			//this.$refs.testButton.captionText = 'BLAAAA';
+			(this.$refs.testwindow as Window).frameCaption = 'Button clicked!';
 		}
+
 
 	}
 </script>
@@ -72,7 +70,4 @@
 		overflow: hidden;
 	}
 
-	.desktop > div{
-		position: relative;
-	}
 </style>

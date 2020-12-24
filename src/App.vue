@@ -1,7 +1,5 @@
 <template>
-
-	<Desktop></Desktop>
-
+	<Desktop ref="desktop"/>
 </template>
 
 <script lang="ts">
@@ -11,18 +9,10 @@
 	@Component({
 		components: {
 			Desktop,
-		},
+		}
 	})
-	export default class App extends Vue {}
-</script>
+	export default class System extends Vue
+	{
 
-<style>
-	#app {
-		font-family: Avenir, Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
-		color: #2c3e50;
-		margin-top: 60px;
 	}
-</style>
+</script>
