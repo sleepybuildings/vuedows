@@ -1,0 +1,1 @@
+<script lang="ts">	import Component from "vue-class-component";	import Vue from "vue";	import {Prop} from "vue-property-decorator";	@Component(	{		data()		{			return {				frameCaption: ''			}		}	})	export default class FrameCaption extends Vue	{		@Prop() caption: string;		public frameCaption = this.caption;	}</script>
