@@ -1,9 +1,14 @@
 <template>
-	<div class="desktop">
+	<div class="desktop" @dblclick="createTestApp">
 
-		<gui-application caption="App 1" :initialSize="[100, 100, 300, 300]">
-			CONTENT!
-		</gui-application>
+		<template v-for="(guiApp, appIndex) in applications">
+			<component :is="guiApp.componentName" :key="appIndex" v-bind="guiApp.bootArguments"/>
+		</template>
+
+
+<!--		<gui-application caption="App 1" :initialSize="[100, 100, 300, 300]">-->
+<!--			CONTENT!-->
+<!--		</gui-application>-->
 
 <!--		<window caption="Initial caption" ref="testwindow" :initialSize="[100, 100, 300, 300]">-->
 
@@ -39,22 +44,53 @@
 	import Frame from "@/components/kernel/ui/Base/Frame.vue";
 	import Window from "@/components/kernel/ui/Components/Windows/Window.vue";
 	import GuiApplication from "@/components/kernel/ui/Base/GuiApplication.vue";
+	import TestApp from "@/components/user/Apps/TestApp.vue";
+	import Application from "@/components/kernel/executables/Application";
 
 	@Component({
 		components: {GuiApplication, PushButton, Window},
 		data()
 		{
 			return {
-
+				guiApplications: []
 			}
 		}
 	})
 	export default class Desktop extends Frame
 	{
 
+		private applications: Array<Application> = [];
+
+		private guiApplications: Array<string> = [];
+
+
 		testButtonPressed()
 		{
 			(this.$refs.testwindow as Window).frameCaption = 'Button clicked!';
+		}
+
+
+		public startApplication(name: string, x, y)
+		{
+
+			const application = new Application(name, {
+				initialSize: [x, y, 200, 200]
+			});
+			// application.componentName = name;
+			// application.bootArguments = [];
+
+			console.log('Starting application ' + name + ' with arguments: ', application.bootArguments);
+
+			this.applications.push(application);
+		}
+
+
+		createTestApp(event: MouseEvent)
+		{
+			if(event.target !== this.$el)
+				return;
+
+			this.startApplication('TestApp', event.offsetX, event.offsetY);
 		}
 
 
