@@ -1,0 +1,1 @@
+import Vue from 'vue';export enum Message{    /**     * Param 1: Window     * Param 2: Mouse Event     */    DragStarted = 'drag-started',    DragEnded = 'drag-ended',}export const MessageBus = new Vue();

@@ -413,7 +413,7 @@ body {
     height: 24px;
     line-height: 24px; }
   .caption-bar.in-active {
-    background: silver; }
+    background: white; }
     .caption-bar.in-active .caption-text {
       color: black; }
 
@@ -483,4 +483,6 @@ body {
     left: 6.5px; }
 
 .drag-frame {
-  border: 3px solid red; }
+  border: 3px solid #393939AA;
+  position: absolute;
+  z-index: 99999; }
