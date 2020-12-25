@@ -1,39 +1,12 @@
 <template>
 	<div class="desktop" @dblclick="createTestApp">
 
+		<window-drag-host :initialSize="[10, 10, 200, 200]"/>
+
 		<template v-for="(guiApp, appIndex) in applications">
 			<component :is="guiApp.componentName" :key="appIndex" v-bind="guiApp.bootArguments"/>
 		</template>
 
-
-<!--		<gui-application caption="App 1" :initialSize="[100, 100, 300, 300]">-->
-<!--			CONTENT!-->
-<!--		</gui-application>-->
-
-<!--		<window caption="Initial caption" ref="testwindow" :initialSize="[100, 100, 300, 300]">-->
-
-<!--			<push-button @tapped="testButtonPressed" ref="testButton1" :initialSize="[10, 10, 100, 25]">-->
-<!--				Button 1-->
-<!--			</push-button>-->
-
-<!--			<push-button @tapped="testButtonPressed" ref="testButton2" :initialSize="[10, 50, 100, 25]">-->
-<!--				Button 2-->
-<!--			</push-button>-->
-
-<!--		</window>-->
-
-
-<!--		<window caption="Second Window" :initialSize="[500, 100, 300, 300]">-->
-<!--			<push-button :initialSize="[50, 10, 100, 25]">-->
-<!--				Button 2-->
-<!--			</push-button>-->
-<!--		</window>-->
-
-<!--		<window caption="Third Window" :initialSize="[300, 50, 300, 300]">-->
-<!--			<push-button :initialSize="[50, 10, 100, 25]">-->
-<!--				Button 2-->
-<!--			</push-button>-->
-<!--		</window>-->
 	</div>
 </template>
 
@@ -44,15 +17,15 @@
 	import Frame from "@/components/kernel/ui/Base/Frame.vue";
 	import Window from "@/components/kernel/ui/Components/Windows/Window.vue";
 	import GuiApplication from "@/components/kernel/ui/Base/GuiApplication.vue";
-	import TestApp from "@/components/user/Apps/TestApp.vue";
 	import Application from "@/components/kernel/executables/Application";
+	import WindowDragHost from "@/components/kernel/ui/Components/Windows/WindowDragHost.vue";
 
 	@Component({
-		components: {GuiApplication, PushButton, Window},
+		components: {WindowDragHost, GuiApplication, PushButton, Window},
 		data()
 		{
 			return {
-				guiApplications: []
+				applications: []
 			}
 		}
 	})
@@ -61,20 +34,12 @@
 
 		private applications: Array<Application> = [];
 
-		private guiApplications: Array<string> = [];
-
-
-		testButtonPressed()
-		{
-			(this.$refs.testwindow as Window).frameCaption = 'Button clicked!';
-		}
-
 
 		public startApplication(name: string, x, y)
 		{
 
 			const application = new Application(name, {
-				initialSize: [x, y, 200, 200]
+				initialSize: [x, y, 150, 100]
 			});
 			// application.componentName = name;
 			// application.bootArguments = [];

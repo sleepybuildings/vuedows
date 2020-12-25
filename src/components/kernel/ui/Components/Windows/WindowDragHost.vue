@@ -1,0 +1,1 @@
+<template>	<div class="drag-frame" :style="frameStyles">	</div></template><script lang="ts">	import Component, {mixins} from "vue-class-component";	import Frame from "@/components/kernel/ui/Base/Frame.vue";	@Component	export default class WindowDragHost extends Frame	{	}</script>

@@ -1,1 +1,1 @@
-import Vue from "vue";export default class Application{    public componentName: string;    public bootArguments: any;    constructor(componentName: string, bootArguments: any)    {        this.componentName = componentName;        this.bootArguments = bootArguments;    }}
+export default class Application{    public componentName: string;    public bootArguments: object;    constructor(componentName: string, bootArguments: object)    {        this.componentName = componentName;        this.bootArguments = bootArguments;    }}

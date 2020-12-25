@@ -1,4 +1,4 @@
-# vuedowns
+# vuedows
 
 Just a little fun project trying to reimplement the Windows 3.11 UI in Vue.
 

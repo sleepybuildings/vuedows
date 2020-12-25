@@ -481,3 +481,6 @@ body {
   .control-button:active .icon {
     top: 9.5px;
     left: 6.5px; }
+
+.drag-frame {
+  border: 3px solid red; }
