@@ -59,6 +59,8 @@
 			if(!window)
 				return;
 
+			GetWindowManager().bringToFront(window);
+
 			(this.$refs.dragWindow as WindowDragHost).cursorOffset = args[1];//new Point();
 			(this.$refs.dragWindow as WindowDragHost).window = window;
 		}
