@@ -1,6 +1,7 @@
 {
-	"name": "hello-world2",
-	"version": "0.1.0",
+	"name": "Vuedows 3.11",
+	"version": "0.0.1",
+	"author": "Thomas Smit (sleepybuildings)",
 	"private": true,
 	"scripts": {
 		"serve": "vue-cli-service serve",

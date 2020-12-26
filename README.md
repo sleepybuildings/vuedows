@@ -1,30 +1,26 @@
-# vuedows
+# Vuedows 3.11
 
-Just a little fun project trying to reimplement the Windows 3.11 UI in Vue.
+Just a little fun project trying to reimplement the Windows 3.11 UI in Typescript and Vue.
 
 ![Screenshot](screenshot.png?raw=true "Screenshot")
 
---
+Supported are the follow things:
 
-## Project setup
-```
-npm install
-```
+- Window creation
+- Window z ordering and activation
+- Window dragging
+- Window resizing (all 8 corners)
+- Basic command buttons
 
-### Compiles and hot-reloads for development
+Double clicking the desktop creates a new window (testing only).
+
+# Development run
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+Sass needs to be started seperatly:
 ```
-npm run build
+npm run sass:watch
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

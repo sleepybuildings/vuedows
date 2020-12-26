@@ -365,6 +365,8 @@ body {
   outline: 1px solid black;
   position: absolute; }
   .window .client {
+    font-family: "MS Sans Serif", "system";
+    font-size: 11pt;
     z-index: 40;
     background: white;
     position: absolute;
@@ -403,7 +405,8 @@ body {
   color: white;
   height: 23px;
   border-bottom: 1px solid black;
-  display: flex; }
+  display: flex;
+  user-select: none; }
   .caption-bar .caption-text {
     overflow: hidden;
     font-family: "MS Sans Serif", "system";
