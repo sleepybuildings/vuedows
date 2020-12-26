@@ -143,7 +143,6 @@ $border-size: 3px;
 		border-color: $button-shadow $button-face $button-face $button-shadow;
 	}
 
-
 	.icon{
 		position: absolute;
 		top: (($caption-bar-height - 3) * 0.5) - ($icon-size-height / 2) + 0;
@@ -156,12 +155,38 @@ $border-size: 3px;
 			border-right: $icon-size-height solid transparent;
 			border-top: $icon-size-height solid $button-text;
 		}
+
 		&.maximize{
 			border-left: $icon-size-height solid transparent;
 			border-right: $icon-size-height solid transparent;
 			border-bottom: $icon-size-height solid $button-text;
 		}
+
+		&.restore{
+			&:after{
+				content: "";
+				border-left: $icon-size-height solid transparent;
+				border-right: $icon-size-height solid transparent;
+				border-bottom: $icon-size-height solid $button-text;
+				background-color: black;
+			}
+		}
 	}
+
+
+	&.can-restore{
+
+		.icon {
+			&.maximize{
+				top: (($caption-bar-height - 3) * 0.35) - ($icon-size-height / 2) + 0;
+			}
+
+			&.minimize{
+				top: (($caption-bar-height - 3) * 0.58) - ($icon-size-height / 2) + 0;
+			}
+		}
+	}
+
 
 	&:active{
 		.icon{
