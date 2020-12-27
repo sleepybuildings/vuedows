@@ -1,1 +1,7 @@
-@import "../variables";.drag-frame{	border: $border-size solid $draghandle-background;	position: absolute;	z-index: 99999;}
+@import "../variables";
+
+.drag-frame{
+	border: $border-size solid $draghandle-background;
+	position: absolute;
+	z-index: 99999;
+}

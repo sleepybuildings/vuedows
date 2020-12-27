@@ -20,20 +20,20 @@
 
 <script lang="ts">
 
-import Component, {mixins} from "vue-class-component";
-import {Point, WindowMode} from "@/components/kernel/ui/Windows/WindowProperties";
-import Frame from "@/components/kernel/ui/Base/Frame.vue";
-import Titlebar from "@/components/kernel/ui/Components/Windows/Titlebar.vue";
-import FocussableFrame from "@/components/kernel/ui/Base/Mixins/FocussableFrame.vue";
-import {Prop, Watch} from "vue-property-decorator";
-import {GetWindowManager} from "@/components/kernel/ui/Windows/WindowManager";
-import GuiApplication from "@/components/kernel/ui/Base/GuiApplication.vue";
-import {Message, MessageBus} from "@/components/kernel/ui/MessageBus";
-import WindowDragHost, {DragMode} from "@/components/kernel/ui/Components/Windows/WindowDragHost.vue";
-import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
+	import Component, {mixins} from "vue-class-component";
+	import {Point, WindowMode} from "@/components/kernel/ui/Windows/WindowProperties";
+	import Frame from "@/components/kernel/ui/Base/Frame.vue";
+	import Titlebar from "@/components/kernel/ui/Components/Windows/Titlebar.vue";
+	import FocussableFrame from "@/components/kernel/ui/Base/Mixins/FocussableFrame.vue";
+	import {Prop, Watch} from "vue-property-decorator";
+	import {GetWindowManager} from "@/components/kernel/ui/Windows/WindowManager";
+	import GuiApplication from "@/components/kernel/ui/Base/GuiApplication.vue";
+	import {Message, MessageBus} from "@/components/kernel/ui/MessageBus";
+	import WindowDragHost, {DragMode} from "@/components/kernel/ui/Components/Windows/WindowDragHost.vue";
+	import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 
 
-@Component(
+	@Component(
 	{
 		components: {Titlebar},
 
@@ -99,8 +99,6 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 			this.windowMode = WindowMode.Minimized;
 			this.previousWindowMode = previousWindowMode;
 
-			console.log('min', this.windowMode, this.previousWindowMode);
-
 			MessageBus.$emit(Message.WindowMinimized, [this.handle]);
 		}
 
@@ -108,8 +106,6 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 		public restoreWindow()
 		{
 			const prevMode = this.previousWindowMode;
-
-			console.log(prevMode, ' => ', this.windowMode);
 
 			this.previousWindowMode = null;
 			this.windowMode = prevMode;
@@ -127,8 +123,6 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 		@Watch('windowMode')
 		public windowModeChanged()
 		{
-			console.log('!!!!!! windowModeChanged = ', this.windowMode);
-
 			if(this.previousWindowMode == WindowMode.Normal)
 				this.retainCurrentFrame();
 
@@ -154,7 +148,7 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 
 			this.onDragStarted(
 				this.determinateDragMode(mouseEvent),
-				[mouseEvent.clientX, mouseEvent.clientY] // :x
+				[mouseEvent.clientX, mouseEvent.clientY]
 			);
 		}
 
@@ -197,7 +191,7 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 
 			// This should never happen
 
-			return DragMode.Resize;
+			return DragMode.Drag;
 		}
 
 
@@ -215,6 +209,8 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 
 		onDragStarted(mode: DragMode, args: Point | number[])
 		{
+			// Lets not drag the window if its maximized
+
 			if(!this.isDraggable())
 				return;
 
@@ -256,8 +252,9 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 			}
 		}
 
+
 		/**
-		 * Passes the focus state of the window to the title bar
+		 * Passes the focus state of the window on to the title bar
 		 */
 		@Watch('frameActive')
 		public focusChanged()
@@ -269,7 +266,9 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 		@Watch('zOrder')
 		public zOrderChanged()
 		{
-			this.zOrder === 0? this.focus() : this.unFocus();
+			this.zOrder === 0
+				? this.focus()
+				: this.unFocus();
 		}
 
 
@@ -291,7 +290,7 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 		}
 
 
-		public get isHidden()
+		public get isHidden(): boolean
 		{
 			return this.windowMode == WindowMode.Hidden
 				|| this.windowMode == WindowMode.Minimized;
