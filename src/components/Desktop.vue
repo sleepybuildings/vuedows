@@ -1,6 +1,8 @@
 <template>
 	<div class="desktop" @dblclick="createTestApp">
 
+		<window-icon-collection ref="desktopIcons" icon-component="MinimizedWindowIcon"/>
+
 		<window-drag-host ref="dragWindow" :initialSize="[10, 10, 200, 200]"/>
 
 		<template v-for="(guiApp, appIndex) in applications">
@@ -24,9 +26,15 @@
 	import {Message, MessageBus} from "@/components/kernel/ui/MessageBus";
 	import {GetWindowManager} from "@/components/kernel/ui/Windows/WindowManager";
 	import {Point} from "@/components/kernel/ui/Windows/WindowProperties";
+	import MinimizedWindowIcon from "@/components/kernel/ui/Components/Desktop/MinimizedWindowIcon.vue";
+	import IconCollection from "@/components/kernel/ui/Components/Icons/IconCollection.vue";
+	import WindowIconCollection from "@/components/kernel/ui/Components/Desktop/WindowIconCollection.vue";
 
 	@Component({
-		components: {WindowDragHost, GuiApplication, PushButton, Window},
+		components: {
+			WindowIconCollection,
+			IconCollection, WindowDragHost, GuiApplication, PushButton, Window, MinimizedWindowIcon
+		},
 		data()
 		{
 			return {
@@ -45,9 +53,17 @@
 		mounted()
 		{
 			this.registerEvents();
+			this.setupDesktopIcons();
 
 			this.startApplication('TestApp', 100, 100);
 			this.startApplication('TestApp', 300, 100);
+
+		}
+
+
+		private setupDesktopIcons()
+		{
+			(this.$refs.desktopIcons as IconCollection).maximizeFrameSize();
 		}
 
 
@@ -60,6 +76,8 @@
 		{
 			MessageBus.$on(Message.DragStarted, this.onMessageDragStarted);
 			MessageBus.$on(Message.TerminateApplication, this.onTerminateApplication);
+
+			document.addEventListener('resize', this.setupDesktopIcons);
 		}
 
 

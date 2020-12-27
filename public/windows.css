@@ -467,31 +467,25 @@ body {
     padding-right: 4px;
     border-width: 1px;
     border-color: gray silver silver gray; }
-  .control-button .icon {
+  .control-button .control-button-icon {
     position: absolute;
     top: 8.5px;
     left: 5.5px;
     width: 0;
     height: 0; }
-    .control-button .icon.minimize {
+    .control-button .control-button-icon.minimize {
       border-left: 4px solid transparent;
       border-right: 4px solid transparent;
       border-top: 4px solid black; }
-    .control-button .icon.maximize {
+    .control-button .control-button-icon.maximize {
       border-left: 4px solid transparent;
       border-right: 4px solid transparent;
       border-bottom: 4px solid black; }
-    .control-button .icon.restore:after {
-      content: "";
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-bottom: 4px solid black;
-      background-color: black; }
-  .control-button.can-restore .icon.maximize {
+  .control-button.can-restore .control-button-icon.maximize {
     top: 5.35px; }
-  .control-button.can-restore .icon.minimize {
+  .control-button.can-restore .control-button-icon.minimize {
     top: 10.18px; }
-  .control-button:active .icon {
+  .control-button:active .control-button-icon {
     top: 9.5px;
     left: 6.5px; }
 
@@ -499,3 +493,27 @@ body {
   border: 3px solid #393939AA;
   position: absolute;
   z-index: 99999; }
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "MS Sans Serif", "system";
+  font-size: 11pt;
+  user-select: none; }
+  .icon img {
+    width: 32px;
+    height: 32px; }
+  .icon span {
+    padding: 2px 3px; }
+  .icon.selected span {
+    background: navy;
+    color: white; }
+
+.icon-collection {
+  display: flex; }
+  .icon-collection .ordering-bottom {
+    align-items: flex-end; }
+
+.window-icon-collection {
+  margin: 20px; }
