@@ -1,7 +1,7 @@
 <template>
 	<div class="desktop" @dblclick="createTestApp">
 
-		<window-icon-collection ref="desktopIcons" icon-component="MinimizedWindowIcon"/>
+		<window-icon-collection ref="desktopIcons" ordering="Ordering.Bottom" icon-component="MinimizedWindowIcon"/>
 
 		<window-drag-host ref="dragWindow" :initialSize="[10, 10, 200, 200]"/>
 
@@ -130,7 +130,7 @@
 		 * Starts a new desktop application. Pass in a component name
 		 * that implements a GuiApplication component.
 		 *
-		 * Make sure you have registered the compoment in main.ts
+		 * Make sure you have registered the component in main.ts
 		 *
 		 * @param name
 		 * @param x

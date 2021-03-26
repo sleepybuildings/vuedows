@@ -31,7 +31,7 @@
 	/**
 	 * Events that the title bar emits to the parent
 	 */
-	enum TitlebarEvents
+	export enum TitlebarEvents
 	{
 		SystemButtonTapped = "system-button-tapped",
 		SystemButtonDoubleTapped = "system-button-double-tapped",

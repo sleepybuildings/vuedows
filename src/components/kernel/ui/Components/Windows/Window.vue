@@ -99,8 +99,6 @@ import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 			this.windowMode = WindowMode.Minimized;
 			this.previousWindowMode = previousWindowMode;
 
-			console.log(this.windowMode, this.previousWindowMode);
-
 			MessageBus.$emit(Message.WindowMinimized, [this.handle]);
 		}
 

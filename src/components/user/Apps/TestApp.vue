@@ -1,6 +1,6 @@
 <template>
 
-	<gui-application ref="app" title="Some Demo app" :initialSize="initialSize" :application-handle="applicationHandle">
+	<gui-application ref="app" :title="'Some Demo app ' + applicationHandle" :initialSize="initialSize" :application-handle="applicationHandle">
 		<p>Application Handle: {{ applicationHandle }}</p>
 		<push-button @tapped="testButtonPressed" ref="testButton1" :initialSize="[10, 30, 140, 25]">
 			Exit application

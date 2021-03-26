@@ -30,6 +30,8 @@
 			this.removeIcon(i => i.payload === window.handle);
 
 			window.restoreWindow();
+
+			GetWindowManager().bringToFront(window);
 		}
 
 

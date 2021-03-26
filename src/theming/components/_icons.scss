@@ -8,6 +8,7 @@
 	font-size: $system-font-size;
 	user-select: none;
 	padding: 3px;
+	position: relative;
 
 	img{
 		width: 32px;
@@ -27,16 +28,16 @@
 }
 
 .icon-collection{
-	display: flex;
-	flex-wrap: wrap;
+	position: absolute;
+	//display: flex;
+	//flex-wrap: wrap;
 
-	&.ordering-bottom{
-		align-items: flex-end;
-		align-content: flex-end;
-	}
+	//&.ordering-bottom{
+	//	align-items: flex-end;
+	//	align-content: flex-end;
+	//}
 }
 
 .window-icon-collection{
-	padding: 20px;
 	box-sizing: border-box;
 }
