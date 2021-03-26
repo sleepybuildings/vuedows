@@ -5,10 +5,8 @@
 
 		<window-drag-host ref="dragWindow" :initialSize="[10, 10, 200, 200]"/>
 
-		<template v-for="(guiApp, appIndex) in applications">
-			<keep-alive :key="appIndex">
-				<component :is="guiApp.componentName" v-bind="guiApp.instanceProps"/>
-			</keep-alive>
+		<template v-for="guiApp in applications">
+			<component :is="guiApp.componentName" v-bind="guiApp.instanceProps" :key="guiApp.handle"/>
 		</template>
 
 	</div>
@@ -57,6 +55,7 @@
 
 			this.startApplication('TestApp', 100, 100);
 			this.startApplication('TestApp', 300, 100);
+			this.startApplication('TestApp', 400, 100);
 
 		}
 
@@ -139,7 +138,8 @@
 		 */
 		public startApplication(name: string, x, y)
 		{
-			const application = new Application(this.applicationCounter++, name, {
+			const handle = this.applicationCounter++;
+			const application = new Application(handle, name, {
 				initialSize: [x, y, 150, 100],
 			});
 

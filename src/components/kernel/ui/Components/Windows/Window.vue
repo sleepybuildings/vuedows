@@ -20,20 +20,20 @@
 
 <script lang="ts">
 
-	import Component, {mixins} from "vue-class-component";
-	import {Point, WindowMode} from "@/components/kernel/ui/Windows/WindowProperties";
-	import Frame from "@/components/kernel/ui/Base/Frame.vue";
-	import Titlebar from "@/components/kernel/ui/Components/Windows/Titlebar.vue";
-	import FocussableFrame from "@/components/kernel/ui/Base/Mixins/FocussableFrame.vue";
-	import {Prop, Watch} from "vue-property-decorator";
-	import {GetWindowManager} from "@/components/kernel/ui/Windows/WindowManager";
-	import GuiApplication from "@/components/kernel/ui/Base/GuiApplication.vue";
-	import {Message, MessageBus} from "@/components/kernel/ui/MessageBus";
-	import WindowDragHost, {DragMode} from "@/components/kernel/ui/Components/Windows/WindowDragHost.vue";
-	import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
+import Component, {mixins} from "vue-class-component";
+import {Point, WindowMode} from "@/components/kernel/ui/Windows/WindowProperties";
+import Frame from "@/components/kernel/ui/Base/Frame.vue";
+import Titlebar from "@/components/kernel/ui/Components/Windows/Titlebar.vue";
+import FocussableFrame from "@/components/kernel/ui/Base/Mixins/FocussableFrame.vue";
+import {Prop, Watch} from "vue-property-decorator";
+import {GetWindowManager} from "@/components/kernel/ui/Windows/WindowManager";
+import GuiApplication from "@/components/kernel/ui/Base/GuiApplication.vue";
+import {Message, MessageBus} from "@/components/kernel/ui/MessageBus";
+import WindowDragHost, {DragMode} from "@/components/kernel/ui/Components/Windows/WindowDragHost.vue";
+import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
 
 
-	@Component(
+@Component(
 	{
 		components: {Titlebar},
 
@@ -99,16 +99,9 @@
 			this.windowMode = WindowMode.Minimized;
 			this.previousWindowMode = previousWindowMode;
 
+			console.log(this.windowMode, this.previousWindowMode);
+
 			MessageBus.$emit(Message.WindowMinimized, [this.handle]);
-		}
-
-
-		public restoreWindow()
-		{
-			const prevMode = this.previousWindowMode;
-
-			this.previousWindowMode = null;
-			this.windowMode = prevMode;
 		}
 
 
@@ -120,6 +113,19 @@
 		}
 
 
+		public restoreWindow()
+		{
+			let prevMode = this.previousWindowMode;
+			if(!(prevMode == WindowMode.Minimized))
+				prevMode = WindowMode.Normal;
+
+			console.log('restore', this.windowMode, this.previousWindowMode);
+
+			this.previousWindowMode = null;
+			this.windowMode = prevMode;
+		}
+
+
 		@Watch('windowMode')
 		public windowModeChanged()
 		{
@@ -127,6 +133,7 @@
 				this.retainCurrentFrame();
 
 			this.updateWindowStyle();
+			//this.previousWindowMode = this.windowMode;
 		}
 
 

@@ -59,11 +59,14 @@
 
 		protected iconGotSelected(selected: [Icon])
 		{
+			console.log(this.icons);
+
 			for (const icon of this.icons)
 			{
 				icon.active = selected === icon[0];
 				console.log(icon.active);
 			}
+
 			this.$forceUpdate();
 		}
 

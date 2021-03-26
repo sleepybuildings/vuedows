@@ -1,12 +1,13 @@
 @import "../variables";
 
 .icon{
-	display: flex;
+	display: inline-flex;
 	flex-direction: column;
 	align-items: center;
 	font-family: $system-font;
 	font-size: $system-font-size;
 	user-select: none;
+	padding: 3px;
 
 	img{
 		width: 32px;
@@ -27,12 +28,15 @@
 
 .icon-collection{
 	display: flex;
+	flex-wrap: wrap;
 
-	.ordering-bottom{
+	&.ordering-bottom{
 		align-items: flex-end;
+		align-content: flex-end;
 	}
 }
 
 .window-icon-collection{
-	margin: 20px;
+	padding: 20px;
+	box-sizing: border-box;
 }

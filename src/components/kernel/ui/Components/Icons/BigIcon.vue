@@ -15,7 +15,7 @@
 	import Frame from "@/components/kernel/ui/Base/Frame.vue";
 	import FocussableFrame from "@/components/kernel/ui/Base/Mixins/FocussableFrame.vue";
 	import Handle from "@/components/kernel/ui/Base/Mixins/Handle.vue";
-	import {Prop} from "vue-property-decorator";
+	import {Prop, Watch} from "vue-property-decorator";
 	import Icon from "@/components/kernel/ui/Components/Icons/Icon";
 
 	@Component
@@ -35,6 +35,12 @@
 		protected onIconDoubleTapped()
 		{
 			this.frameActive = this.icon.active = false;
+		}
+
+		@Watch('icon.active')
+		protected onIconActiveStateChanged()
+		{
+			this.frameActive = this.icon.active;
 		}
 
 
